@@ -1,3 +1,3 @@
 var setup = {
-    nodeServerPath : "http://localhost:8080"
+    nodeServerPath : "http://" + window.location.hostname
 };
