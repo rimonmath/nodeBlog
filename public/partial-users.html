@@ -1,0 +1,105 @@
+<h2>All Users</h2>
+<hr>
+<div class="alert alert-success" ng-show="successMessage">
+   <button type="button" class="close" data-ng-click="clearMessage()" >×</button>
+   <strong>Done!</strong> {{successMessage}}
+</div>
+
+ <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>username</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="user in users">
+        <td>{{user.full_name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td>
+          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" ng-click="selectUser(user)">Edit</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete" ng-click="selectUser(user)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit this user</h4>
+        </div>
+        <div class="modal-body">
+          <form class="rmnForm">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>username</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> 
+                  <input type="text" ng-model="clickedUser.full_name">
+                </td>
+                <td>
+                  <input type="text" ng-model="clickedUser.email">
+                </td>
+                <td>
+                  <input type="text" ng-model="clickedUser.username" disabled="disabled">
+                </td>                
+              </tr>
+            </tbody>
+          </table>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="updateUser()">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myModalDelete" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Are you sure?</h4>
+        </div>
+        <div class="modal-body">
+          <strong>Your are going to delete the user "{{clickedUser.full_name}}". once deleted it can't be undone. Would you like to continue?</strong>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="deleteUser()">Yes</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <style type="text/css">
+    .rmnForm input{
+      padding: 5px;
+    }
+  </style>
+

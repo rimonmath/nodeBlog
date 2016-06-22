@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- CSS (load bootstrap) -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <style>
+        .navbar { border-radius:0; }
+    </style>
+
+    <!-- JS (load angular, ui-router, and our custom js file) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+    <script src="app.js"></script>
+    <script src="controllers.js"></script>
+    <style type="text/css">
+        .activeRmn{
+            background: #444;
+        }
+    </style>
+</head>
+
+<!-- apply our angular app to our site -->
+<body ng-app="routerApp">
+
+<!-- NAVIGATION -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="#">Mongodb Blog</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a ui-sref-active="activeRmn" ui-sref="home">Home</a></li>        
+        <li><a ui-sref-active="activeRmn" ui-sref="register">Register</a>
+        <li><a ui-sref-active="activeRmn" ui-sref="users">Users</a>
+    </li>
+    </ul>
+</nav>
+
+<!-- MAIN CONTENT -->
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<div class="container">
+    <div ui-view></div>
+</div>
+
+<div class="text-center">
+    <p>Copyright &copy; nodeBlog-2016, All rights reserved! </p>
+</div>
+
+</body>
+</html>
