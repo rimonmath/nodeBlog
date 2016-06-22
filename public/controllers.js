@@ -41,7 +41,7 @@ routerApp.controller('registerController', function($scope, $http, $httpParamSer
             $scope.successMessage = "Email can't be empty!";
         } else{
             $http({
-                url: 'http://localhost:8080/crud/create/Users',
+                url: setup.nodeServerPath + '/crud/create/Users',
                 method: 'POST',
                 data: $httpParamSerializerJQLike({data: $scope.user}),
                 headers: {
@@ -62,7 +62,7 @@ routerApp.controller('registerController', function($scope, $http, $httpParamSer
 routerApp.controller('usersController', function($scope, $http, $httpParamSerializerJQLike) {
     console.log("Users Controller..."); 
 
-    $http.get("http://localhost:8080/crud/list/Users").then(function(response) {
+    $http.get( setup.nodeServerPath + "/crud/list/Users").then(function(response) {
        $scope.users = response.data;       
     });   
 
@@ -71,7 +71,7 @@ routerApp.controller('usersController', function($scope, $http, $httpParamSerial
     };
     $scope.deleteUser = function(){
         $http({
-            url: 'http://localhost:8080/crud/delete/Users',
+            url:  setup.nodeServerPath + '/crud/delete/Users',
             method: 'POST',
             data: $httpParamSerializerJQLike({_id: $scope.clickedUser._id}),
             headers: {
@@ -79,7 +79,7 @@ routerApp.controller('usersController', function($scope, $http, $httpParamSerial
             }
         }).success(function(response) {
             console.log(response); 
-            $http.get("http://localhost:8080/crud/list/Users").then(function(response) {
+            $http.get( setup.nodeServerPath + "/crud/list/Users").then(function(response) {
                $scope.users = response.data;       
             });            
         }); 
@@ -96,7 +96,7 @@ routerApp.controller('usersController', function($scope, $http, $httpParamSerial
             }
         }).success(function(response) {
             console.log(response); 
-            $http.get("http://localhost:8080/crud/list/Users").then(function(response) {
+            $http.get( setup.nodeServerPath + "/crud/list/Users").then(function(response) {
                $scope.users = response.data;       
             });  
 
