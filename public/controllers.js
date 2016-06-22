@@ -88,7 +88,7 @@ routerApp.controller('usersController', function($scope, $http, $httpParamSerial
 
     $scope.updateUser = function(){
         $http({
-            url: 'http://localhost:8080/crud/update/Users',
+            url: setup.nodeServerPath + '/crud/update/Users',
             method: 'POST',
             data: $httpParamSerializerJQLike($scope.clickedUser),
             headers: {
