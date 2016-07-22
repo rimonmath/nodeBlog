@@ -1,8 +1,5 @@
 var mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://rmn:rmn@ds053194.mlab.com:53194/rmndb');
-//mongoose.connect('mongodb://rimonmath:mla18152229@ds053194.mlab.com:53194/rmndb');
-mongoose.connect('mongodb://rmn:rmn@ds053194.mlab.com:53194/rmndb');
 
 var Schema = mongoose.Schema;
 
